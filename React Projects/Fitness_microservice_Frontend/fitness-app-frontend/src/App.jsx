@@ -1,5 +1,5 @@
 import {BrowserRouter as Router, Routes, Route, Navigate, useLocation} from "react-router";
-import {Button, Box, Typography} from "@mui/material";
+import {Button, Box, Typography, Paper} from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "react-oauth2-code-pkce";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,7 @@ import { setCredentials } from "./store/authSlice";
 import ActivityForm from "./components/ActivityForm";
 import ActivityList from "./components/ActivityList";
 import ActivityDetail from "./components/ActivityDetail";
+import { motion } from "framer-motion";
 
 const ActivityPage = () => {
   return (
@@ -32,10 +33,68 @@ function App() {
   return (
     <Router>
       {!token ? (
-     
-      <Button variant="contained" color="primary" size="large" onClick={logIn} >
-        LOGIN
-      </Button>
+      //LOGIN
+      <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "linear-gradient(135deg, #667eea, #764ba2)",
+        p: 2,
+      }}
+    >
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <Paper
+          elevation={8}
+          sx={{
+            p: 5,
+            borderRadius: 3,
+            minWidth: 300,
+            textAlign: "center",
+            backgroundColor: "rgba(255,255,255,0.95)",
+          }}
+        >
+          <Typography variant="h4" fontWeight="bold" sx={{ mb: 2 }}>
+            Welcome Back
+          </Typography>
+          <Typography variant="body1" sx={{ mb: 4, color: "#555" }}>
+            Please log in to continue to your dashboard
+          </Typography>
+
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Button
+              variant="contained"
+              size="large"
+              sx={{
+                px: 6,
+                py: 1.5,
+                borderRadius: "30px",
+                fontWeight: "bold",
+                fontSize: "1.1rem",
+                background: "linear-gradient(90deg, #00C9FF, #92FE9D)",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
+                textTransform: "none",
+                "&:hover": {
+                  background: "linear-gradient(90deg, #00C9FF, #6EFCEB)",
+                  boxShadow: "0 6px 25px rgba(0,0,0,0.3)",
+                },
+              }}
+              onClick={logIn}
+            >
+              LOGIN
+            </Button>
+          </motion.div>
+        </Paper>
+      </motion.div>
+    </Box>
           ) : (
             // <div>
             //   <pre>{JSON.stringify(tokenData, null, 2)}</pre>

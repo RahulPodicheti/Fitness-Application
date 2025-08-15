@@ -34,7 +34,7 @@ const ActivityList = () => {
             <CardContent>
               <Typography variant="h6">{activity.type}</Typography>
               <Typography>Duration: {activity.duration}</Typography>
-              <Typography>Calories: {activity.calariesBurned}</Typography> {/* ✅ Fixed spelling */}
+              <Typography>Calories: {activity.calariesBurned}</Typography>
             </CardContent>
           </Card>
         </Grid>

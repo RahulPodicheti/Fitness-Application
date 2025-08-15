@@ -29,9 +29,7 @@ const ActivityDetail = () => {
       <Card sx={{ mb: 2 }}>
         <CardContent>
           <Typography variant="h5" gutterBottom>Activity Details</Typography>
-          <Typography>Type: {activity.type}</Typography>
-          <Typography>Duration: {activity.duration} minutes</Typography>
-          <Typography>Calories Burned: {activity.calariesBurned}</Typography>
+          <Typography>Type: {activity.activityType}</Typography>
           <Typography>Date: {new Date(activity.createdAt).toLocaleString()}</Typography>
         </CardContent>
       </Card>
